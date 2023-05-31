@@ -7,3 +7,24 @@ Exercise 83: Shipping Calculator
     the order as the function’s result. Include a main program that reads the number of
     items purchased from the user and displays the shipping charge.
 """
+
+# Define constants
+FIRST_ORDER = 10.95
+SUBSEQUENT_ORDER = 2.95
+
+
+# Function that calculate the shipping price
+# @param item: Number of items in the order
+# @return The total shipment fee
+def shipment_calculator(item):
+    return FIRST_ORDER + SUBSEQUENT_ORDER * (item - 1)
+
+
+# Get user input
+num_items = int(input("Enter the number of items in your order: "))
+
+# Calculate the fee
+shipment_fee = shipment_calculator(num_items)
+
+# Display the result
+print("The shipment fee for %d items is $%.2f." % (num_items, shipment_fee))

@@ -10,3 +10,27 @@ Exercise 82:Taxi Fare
     the variable portion of the fare so that the program can be updated easily when
     the rates increase.
 """
+
+BASE_FARE = 4.0
+FARE_PER_METERS = 0.25
+
+
+# Define the function
+
+# Function to calculate the Taxi Fare
+# @param distance: Distance travelled in meters
+# @return The total taxi fare
+def taxi_fare(distance):
+    number_of_sub_distance = distance // 140
+    total_fare = BASE_FARE + number_of_sub_distance * FARE_PER_METERS
+    return total_fare
+
+
+# Get input from the user
+distance = int(input("Enter the total distance in meters: "))
+
+# Calculate the far
+total_fare = taxi_fare(distance)
+
+# Display the result to the user
+print("The taxi fare for your trip is: $%0.2f." % total_fare)

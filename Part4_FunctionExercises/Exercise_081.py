@@ -8,3 +8,24 @@ Exercise 81: Compute the Hypotenuse
     length of the hypotenuse, and displays the result.
 """
 
+
+# Define the function
+
+# Compute the Hypotenuse of a right triangle
+# @param One of the smallest side of the triangle
+# @param The second smallest side of the triangle
+# @return The Hypotenuse of the triangle
+def hypotenuse(side_1, side_2):
+    side_3 = (side_1 ** 2 + side_2 ** 2) ** (1 / 2)
+    return side_3
+
+
+# Get user input
+side_1 = float(input("Enter the side 1 of the right triangle: "))
+side_2 = float(input("Enter the side 2 of the right triangle: "))
+
+# Compute the Hypotenuse
+side_3 = hypotenuse(side_1, side_2)
+
+# Display the result
+print("The Hypotenuse of a right triangle with sides %0.1f and %.1f is equal to %.1f." % (side_1, side_2, side_3))
