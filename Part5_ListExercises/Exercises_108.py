@@ -9,7 +9,8 @@ Exercise 108: Negatives,Zeros and Positives
     your program should output the values -4, -1, -2, 0, 0, 3, and 1. Your program
     should display each value on its own line.
 """
-
+# Method 1:
+print("First Method:")
 # Create a list
 nums = list()
 user = None
@@ -27,4 +28,39 @@ while True:
 # Display the result
 print("\nYour entered values are:")
 for i in sorted(nums):
+    print(i)
+
+# -------------------------------------------------------------------------------
+# Method 2:
+print("\nSecond Method:")
+# Create three different lists to store negative, zero, and positive values
+negatives = []
+zeros = []
+positives = []
+
+# Get data from the user
+line = input("Enter an integer (blank to quit): ")
+
+while line != "":
+    num = int(line)
+
+    if num < 0:
+        negatives.append(num)
+    elif num > 0:
+        positives.append(num)
+    else:
+        zeros.append(num)
+
+    # Read the next line of input from the user
+    line = input("Enter an integer (blank to quit): ")
+
+# displays the numbers
+print("The numbers that you entered are: ")
+for i in negatives:
+    print(i)
+
+for i in zeros:
+    print(i)
+
+for i in positives:
     print(i)
