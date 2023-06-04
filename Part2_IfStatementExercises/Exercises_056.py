@@ -12,3 +12,34 @@ Exercise 56: Cell Phone Bill
     display the additional minute and text message charges if the user incurred costs in
     these categories. Ensure that all of the charges are displayed using 2 decimal places.
 """
+
+# Constants
+BASE_CHARGE = 15.00
+ADDITIONAL_MINUTE_CHARGE = 0.25
+ADDITIONAL_MESSAGE_CHARGE = 0.15
+FEE_911 = 0.44
+SALES_TAX_RATE = 0.05
+
+# User inputs
+minutes_used = int(input("Enter the number of minutes used: "))
+messages_used = int(input("Enter the number of text messages used: "))
+
+# Calculate additional charges
+additional_minute_charge = max(minutes_used - 50, 0) * ADDITIONAL_MINUTE_CHARGE
+additional_message_charge = max(messages_used - 50, 0) * ADDITIONAL_MESSAGE_CHARGE
+
+# Calculate total charges
+subtotal = BASE_CHARGE + additional_minute_charge + additional_message_charge + FEE_911
+tax = subtotal * SALES_TAX_RATE
+total_bill = subtotal + tax
+
+# Display the bill details
+print(f"Base Charge: ${BASE_CHARGE:.2f}")
+if additional_minute_charge > 0:
+    print(f"Additional Minutes Charge: ${additional_minute_charge:.2f}")
+if additional_message_charge > 0:
+    print(f"Additional Messages Charge: ${additional_message_charge:.2f}")
+print(f"911 Fee: ${FEE_911:.2f}")
+print(f"Tax: ${tax:.2f}")
+print(f"Total Bill: ${total_bill:.2f}")
+

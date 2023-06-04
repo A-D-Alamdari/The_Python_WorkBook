@@ -17,3 +17,27 @@ Exercise 54:Wavelengths of Visible Light
     an appropriate error message if the wavelength entered by the user is outside of the
     visible spectrum.
 """
+
+# User input
+wavelength = float(input("Enter the wavelength (in nm): "))
+
+# Determine the color based on wavelength
+if 380 <= wavelength < 450:
+    color = "Violet"
+elif 450 <= wavelength < 495:
+    color = "Blue"
+elif 495 <= wavelength < 570:
+    color = "Green"
+elif 570 <= wavelength < 590:
+    color = "Yellow"
+elif 590 <= wavelength < 620:
+    color = "Orange"
+elif 620 <= wavelength <= 750:
+    color = "Red"
+else:
+    print("Error: The entered wavelength is outside the visible spectrum.")
+    exit()
+
+# Display the result
+print(f"The wavelength {wavelength} nm corresponds to the color {color}.")
+
