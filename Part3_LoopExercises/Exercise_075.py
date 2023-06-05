@@ -13,3 +13,17 @@ Exercise 75: Greatest Common Divisor
     Write a program that reads two positive integers from the user and uses this algorithm
     to determine and report their greatest common divisor.
 """
+
+# Get user inputs
+n = int(input("Enter a positive integer: "))
+m = int(input("Enter a positive integer: "))
+
+# Initialize a variable to the smallest of n and m
+d = min(m, n)
+
+# Use a while-loop to find the greatest common divisor of n and m
+while m % d != 0 or m % d != 0:
+    d = d - 1
+
+# Display the result
+print(f"The greatest common divisor of {n} and {m} is: {d}")

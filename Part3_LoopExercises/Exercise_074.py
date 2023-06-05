@@ -16,3 +16,22 @@ Exercise 74: Multiplication Table
     to the next line, causing the next print statement to display its result on the same line
     as the letter A.
 """
+
+# Define constants
+MIN = 1
+MAX = 10
+
+# Display the top row of labels
+print("      ", end="")
+for i in range(MIN, MAX + 1):
+    print("%4d" % i, end="")
+print()
+print(" ---|-----------------------------------------")
+
+# Display the table
+for i in range(MIN, MAX + 1):
+    print("%3d" % i, end=" |")
+    for j in range(MIN, MAX + 1):
+        print("%4d" % (i * j), end="")
+    print()
+
