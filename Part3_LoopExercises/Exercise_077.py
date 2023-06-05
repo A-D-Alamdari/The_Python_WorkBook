@@ -7,3 +7,12 @@ Exercise 77: Binary to Decimal
     binary number. Finally, your program should display the equivalent decimal number
     with an appropriate message.
 """
+
+binary = input("Enter a binary number: ")
+decimal = 0
+
+for digit in binary:
+    decimal = decimal * 2 + int(digit)
+
+print(f"The decimal equivalent of {binary} is {decimal}.")
+

@@ -29,3 +29,35 @@ Exercise 79:Maximum Integer
     program several times. Is the number of updates performed on the maximum value
     what you expected?
 """
+
+# We need to import random library
+import random
+
+NUM_ITEMS = 100
+
+# Generate the first number and display it
+max_value = random.randrange(1, NUM_ITEMS + 1)
+print(max_value)
+
+# Count of the number of updates
+num_updates = 0
+
+# For each of the remaining numbers
+for i in range(1, NUM_ITEMS):
+    # Generate a new random number
+    current = random.randrange(1, NUM_ITEMS + 1)
+
+    # If the generated number is the largest one we have seen so far
+    if current > max_value:
+        # Update the maximum and count the update
+        max_value = current
+        num_updates += 1
+        # Display the number, noting that an update occurred
+        print(f"{current} <== Update")
+    else:
+        # Display the number only
+        print(current)
+
+# Display the final result
+print(f"The maximum value found was {max_value}")
+print(f"The maximum value was updated {num_updates} times.")

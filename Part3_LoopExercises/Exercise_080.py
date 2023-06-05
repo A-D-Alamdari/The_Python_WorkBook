@@ -16,3 +16,31 @@ Exercise 80: Coin Flip Simulation
     perform the simulation 10 times and report the average number of flips needed.
     Sample output is shown below:
 """
+
+import random
+
+num_simulations = 10
+total_flips = 0
+
+for _ in range(num_simulations):
+    flips = 0
+    consecutive_flips = 0
+    last_flip = None
+
+    while consecutive_flips < 3:
+        flip = random.choice(['H', 'T'])
+        flips += 1
+
+        if flip == last_flip:
+            consecutive_flips += 1
+        else:
+            consecutive_flips = 1
+
+        last_flip = flip
+        print(flip, end=' ')
+
+    print(f" ({flips} flips)")
+    total_flips += flips
+
+average_flips = total_flips / num_simulations
+print(f"On average, {average_flips} flips were needed.")
