@@ -7,3 +7,32 @@ Exercise 93: Next Prime
     the user and displays the first prime number larger than the entered value. Import
     and use your solution to Exercise 92 while completing this exercise.
 """
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+
+    return True
+
+
+def nextPrime(n):
+    prime = n + 1
+    while True:
+        if is_prime(prime):
+            return prime
+        prime += 1
+
+
+def main():
+    num = int(input("Enter an integer: "))
+    prime = nextPrime(num)
+    print(f"The first prime number larger than {num} is: {prime}")
+
+
+if __name__ == '__main__':
+    main()

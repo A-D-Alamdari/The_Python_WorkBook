@@ -8,3 +8,27 @@ Exercise 92: Is a Number Prime?
     that the main program will not run if the file containing your solution is imported
     into another program.
 """
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+
+    return True
+
+
+def main():
+    num = int(input("Enter an integer: "))
+
+    if is_prime(num):
+        print(f"{num} is a prime number.")
+    else:
+        print(f"{num} is not a prime number.")
+
+
+if __name__ == '__main__':
+    main()

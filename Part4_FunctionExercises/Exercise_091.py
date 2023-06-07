@@ -13,3 +13,27 @@ Exercise 91: Operator Precedence
     represent exponentiation. Using ˆ instead of Python’s choice of ** will make
     these exercises easier because an operator will always be a single character.
 """
+
+
+def precedence(operator):
+    if operator == '+' or operator == '-':
+        return 1
+    elif operator == '*' or operator == '/':
+        return 2
+    elif operator == 'ˆ':
+        return 3
+    else:
+        return -1
+
+
+def main():
+    operator = input("Enter a mathematical operator: ")
+    operator_precedence = precedence(operator)
+    if operator_precedence == -1:
+        print("Error: Invalid operator")
+    else:
+        print("Operator precedence:", operator_precedence)
+
+
+if __name__ == '__main__':
+    main()

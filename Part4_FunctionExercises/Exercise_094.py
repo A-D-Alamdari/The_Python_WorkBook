@@ -10,3 +10,24 @@ Exercise 94: Random Password
     Hint: You will probably find the chr function helpful when completing this
     exercise. Detailed information about this function is available online.
 """
+
+# We need to import random library
+
+import random
+
+
+def generate_password():
+    password_length = random.randint(7, 10)
+    password = ""
+    for _ in range(password_length):
+        password += chr(random.randint(33, 126))
+    return password
+
+
+def main():
+    password = generate_password()
+    print("Randomly generated password:", password)
+
+
+if __name__ == '__main__':
+    main()
