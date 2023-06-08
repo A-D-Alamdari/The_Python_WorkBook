@@ -12,3 +12,28 @@ Exercise 101: Reduce a Fraction to Lowest Terms
     divisor of two positive integers.You may find that code useful when completing
     this exercise.
 """
+
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+
+def reduce_fraction(numerator, denominator):
+    common_divisor = gcd(numerator, denominator)
+    reduced_numerator = numerator // common_divisor
+    reduced_denominator = denominator // common_divisor
+    return reduced_numerator, reduced_denominator
+
+
+def main():
+    numerator = int(input("Enter the numerator: "))
+    denominator = int(input("Enter the denominator: "))
+
+    reduced_numerator, reduced_denominator = reduce_fraction(numerator, denominator)
+    print("Reduced fraction:", reduced_numerator, "/", reduced_denominator)
+
+
+if __name__ == "__main__":
+    main()

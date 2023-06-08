@@ -18,3 +18,44 @@ Exercise 102: Reduce Measures
     Hint: One cup is equivalent to 16 tablespoons. One tablespoon is equivalent to
     3 teaspoons.
 """
+
+
+def express_volume(units, unit_type):
+    if unit_type == "cup":
+        cups = units // 16
+        tablespoons = (units % 16) // 3
+        teaspoons = (units % 16) % 3
+    elif unit_type == "tablespoon":
+        cups = units // 16
+        tablespoons = units % 16
+        teaspoons = 0
+    elif unit_type == "teaspoon":
+        cups = units // 48
+        tablespoons = (units % 48) // 3
+        teaspoons = (units % 48) % 3
+
+    result = ""
+    if cups > 0:
+        result += str(cups) + " cup" + ("s" if cups > 1 else "")
+    if tablespoons > 0:
+        if result:
+            result += ", "
+        result += str(tablespoons) + " tablespoon" + ("s" if tablespoons > 1 else "")
+    if teaspoons > 0:
+        if result:
+            result += ", "
+        result += str(teaspoons) + " teaspoon" + ("s" if teaspoons > 1 else "")
+
+    return result
+
+
+def main():
+    units = int(input("Enter the number of units: "))
+    unit_type = input("Enter the unit of measure (cup, tablespoon, teaspoon): ")
+
+    result = express_volume(units, unit_type)
+    print("Expressed volume:", result)
+
+
+if __name__ == "__main__":
+    main()
