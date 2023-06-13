@@ -12,3 +12,33 @@ Exercise 128: Reverse Lookup
     the file containing your solution to this exercise has not been imported into another
     program.
 """
+
+
+def reverse_lookup(dictionary, value):
+    keys = []
+    for key in dictionary:
+        if dictionary[key] == value:
+            keys.append(key)
+    return keys
+
+
+# Example usage
+def main():
+    # Create a sample dictionary
+    ages = {
+        'Alice': 25,
+        'Bob': 30,
+        'Charlie': 25,
+        'Dave': 35,
+        'Eve': 30
+    }
+
+    # Perform reverse lookups
+    print(reverse_lookup(ages, 25))  # Output: ['Alice', 'Charlie']
+    print(reverse_lookup(ages, 30))  # Output: ['Bob', 'Eve']
+    print(reverse_lookup(ages, 35))  # Output: ['Dave']
+    print(reverse_lookup(ages, 40))  # Output: []
+
+
+if __name__ == '__main__':
+    main()
