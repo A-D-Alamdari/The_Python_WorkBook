@@ -15,3 +15,29 @@ Exercise 138: Create a Bingo Card
     You may be aware that Bingo cards often have a “free” space in the middle of
     the card. We won’t consider the free space in this exercise.
 """
+
+import random
+
+
+def create_bingo_card():
+    card = {}
+    lower_bounds = [1, 16, 31, 46, 61]
+
+    for i, letter in enumerate(['B', 'I', 'N', 'G', 'O']):
+        card[letter] = random.sample(range(lower_bounds[i], lower_bounds[i] + 15), 5)
+
+    return card
+
+
+def display_bingo_card(card):
+    print("B   I   N   G   O")
+    print("------------------")
+    for i in range(5):
+        for letter in ['B', 'I', 'N', 'G', 'O']:
+            print(f"{card[letter][i]:2}", end="  ")
+        print()
+
+
+# Example usage
+card = create_bingo_card()
+display_bingo_card(card)
