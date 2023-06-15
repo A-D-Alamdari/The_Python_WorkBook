@@ -10,3 +10,21 @@ Exercise 143: ConcatenateMultiple Files
     Display an appropriate error message if your program is started without any command
     line parameters.
 """
+
+import sys
+
+if len(sys.argv) < 2:
+    print("You must provide at least one file name as a command line parameter!")
+    quit()
+
+try:
+    for i in range(1, len(sys.argv)):
+        filename = sys.argv[i]
+        with open(filename, "r") as file:
+            content = file.read()
+            print(content)
+
+except FileNotFoundError as e:
+    print(f"File not found: {e.filename}")
+except IOError as e:
+    print(f"An error occurred while accessing the file: {e.filename}")

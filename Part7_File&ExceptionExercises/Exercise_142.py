@@ -14,3 +14,29 @@ Exercise 142: Display the Tail of a File
     only requires you to read the file once, and only requires you to store 10 lines from
     the file at one time. For an added challenge, develop such a solution.
 """
+
+import sys
+
+NUM_LINES = 10
+
+if len(sys.argv) != 2:
+    print("You must provide the file name as a command line parameter!")
+    quit()
+
+try:
+    filename = sys.argv[1]
+    with open(filename, "r") as file:
+        lines = []
+        for line in file:
+            lines.append(line.strip())
+            if len(lines) > NUM_LINES:
+                lines.pop(0)
+
+        if len(lines) < NUM_LINES:
+            print("The file contains fewer than 10 lines:")
+        print("\n".join(lines))
+
+except FileNotFoundError:
+    print("The file requested does not exist!")
+except IOError:
+    print("An error occurred while accessing the file!")
