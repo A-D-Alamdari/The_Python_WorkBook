@@ -11,3 +11,27 @@ Exercise 150:Remove Comments
     enter the name of the input file. Ensure that an appropriate error message is displayed
     if a problem is encountered while accessing the files.
 """
+
+
+def remove_comments(input_file, output_file):
+    try:
+        with open(input_file, 'r') as file:
+            lines = file.readlines()
+
+        with open(output_file, 'w') as file:
+            for line in lines:
+                line = line.split('#', 1)[0]  # Remove comment starting from #
+                file.write(line)
+
+        print("Comments removed successfully. Modified file saved as", output_file)
+
+    except FileNotFoundError:
+        print("Input file not found.")
+    except IOError:
+        print("An error occurred while accessing the file.")
+
+
+input_file = input("Enter the name of the input file: ")
+output_file = input("Enter the name of the output file: ")
+
+remove_comments(input_file, output_file)
