@@ -42,3 +42,21 @@ Exercise 162: Consistent Line Lengths
     Hint: Use a constant to represent the maximum line length. This will make it
     easier to update the program when the window size changes.
 """
+
+
+import textwrap
+
+
+def display_file(file_name, line_length):
+    with open(file_name, 'r') as file:
+        paragraphs = file.read().split('\n\n')
+        for paragraph in paragraphs:
+            lines = textwrap.wrap(paragraph, line_length)
+            for line in lines:
+                print(line)
+
+
+# Test the program with the provided example
+file_name = "words.txt"  # Replace with the actual file name
+line_length = 50  # Adjust as needed
+display_file(file_name, line_length)

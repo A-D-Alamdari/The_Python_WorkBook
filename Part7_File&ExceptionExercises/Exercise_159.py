@@ -20,3 +20,44 @@ Exercise 159: RepeatedWords
     error message if the user fails to provide a command line parameter, or if an error
     occurs while processing the file.
 """
+
+
+import sys
+
+
+def find_repeated_words(filename):
+    repeated_words = []
+
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+
+        for i, line in enumerate(lines):
+            words = line.strip().split()
+
+            for j in range(len(words) - 1):
+                if words[j] == words[j + 1]:
+                    repeated_words.append((i + 1, words[j]))
+
+    return repeated_words
+
+
+# Check if the filename is provided as a command line argument
+if len(sys.argv) < 2:
+    print("Error: Please provide a filename as a command line argument.")
+    sys.exit(1)
+
+filename = sys.argv[1]  # Get the filename from the command line argument
+
+try:
+    repeated_words = find_repeated_words(filename)
+
+    if len(repeated_words) == 0:
+        print("No repeated words found.")
+    else:
+        print("Repeated words:")
+        for line_number, word in repeated_words:
+            print(f"Line {line_number}: {word}")
+
+except IOError:
+    print(f"Error: Unable to open file '{filename}'.")
+

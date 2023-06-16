@@ -20,3 +20,57 @@ Exercise 158: Spell Checker
     set. If you use a dictionary, the words will be the keys. The values can be the
     integer 0 (or any other value) because the values will never be used.
 """
+
+import sys
+import string
+
+
+def load_known_words(filename):
+    known_words = set()
+
+    with open(filename, 'r') as file:
+        for line in file:
+            word = line.strip().lower()
+            known_words.add(word)
+
+    return known_words
+
+
+def check_spelling(filename, known_words):
+    misspelled_words = set()
+
+    with open(filename, 'r') as file:
+        for line in file:
+            words = line.strip().split()
+
+            for word in words:
+                # Remove punctuation marks from the word
+                word = word.strip(string.punctuation).lower()
+
+                # Check if the word is in the known_words set
+                if word not in known_words:
+                    misspelled_words.add(word)
+
+    return misspelled_words
+
+
+# Check if the filename is provided as a command line argument
+if len(sys.argv) < 2:
+    print("Error: Please provide a filename as a command line argument.")
+    sys.exit(1)
+
+filename = sys.argv[1]  # Get the filename from the command line argument
+
+# Load the known words from the words data set (Exercise 111)
+known_words = load_known_words("words.txt")  # Replace with the actual filename
+
+# Check the spelling of words in the given file
+misspelled_words = check_spelling(filename, known_words)
+
+# Display the misspelled words
+if len(misspelled_words) == 0:
+    print("No misspelled words found.")
+else:
+    print("Misspelled words:")
+    for word in misspelled_words:
+        print(word)

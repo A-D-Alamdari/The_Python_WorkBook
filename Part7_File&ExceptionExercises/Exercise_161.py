@@ -18,3 +18,28 @@ Exercise 161:Missing Comments
     the remaining files.
 """
 
+import sys
+
+
+def find_missing_comments(files):
+    for file_name in files:
+        try:
+            with open(file_name, 'r') as file:
+                lines = file.readlines()
+                for i, line in enumerate(lines):
+                    if line.startswith('def ') and (i == 0 or not lines[i - 1].strip().startswith('#')):
+                        function_name = line.split(' ')[1].split('(')[0]
+                        print(f"Missing comment for function '{function_name}' in file '{file_name}', line {i + 1}")
+        except FileNotFoundError:
+            print(f"File '{file_name}' not found.")
+        except IOError:
+            print(f"Error reading file '{file_name}'.")
+
+
+# Check if file names are provided as command line arguments
+if len(sys.argv) < 2:
+    print("Please provide one or more file names as command line parameters.")
+else:
+    # Get the file names from the command line arguments
+    file_names = sys.argv[1:]
+    find_missing_comments(file_names)
