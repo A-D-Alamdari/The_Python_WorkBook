@@ -10,3 +10,49 @@ Exercise 154: Names that Reached Number One
     one containing the most popular names for boys and the other containing the most
     popular names for girls. Neither of your lists should include any repeated values.
 """
+
+import os
+
+import os
+
+import os
+
+
+def get_most_popular_names(directory):
+    popular_boy_names = set()
+    popular_girl_names = set()
+
+    for filename in os.listdir(directory):
+        if filename.endswith(".txt"):
+            year = int(filename.split("_")[0])
+            with open(os.path.join(directory, filename), "r") as file:
+                lines = file.readlines()
+                boy_names = []
+                girl_names = []
+                for line in lines:
+                    name, count = line.strip().split()
+                    count = int(count)
+                    if count > 0:
+                        boy_names.append((name, count))
+                        girl_names.append((name, count))
+                boy_names.sort(key=lambda x: x[1], reverse=True)
+                girl_names.sort(key=lambda x: x[1], reverse=True)
+                popular_boy_names.add(boy_names[0][0])
+                popular_girl_names.add(girl_names[0][0])
+
+    return popular_boy_names, popular_girl_names
+
+
+# Directory containing the baby names data set
+directory = "baby_names_data"  # Replace with the actual directory path
+boy_names, girl_names = get_most_popular_names(directory)
+
+# Display the most popular names for boys
+print("Most popular names for boys:")
+for name in boy_names:
+    print(name)
+
+# Display the most popular names for girls
+print("\nMost popular names for girls:")
+for name in girl_names:
+    print(name)

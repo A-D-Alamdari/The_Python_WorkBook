@@ -13,3 +13,27 @@ Exercise 151:TwoWord Random Password
     the user can easily see where one word ends and the next one begins. Display the
     password for the user.
 """
+
+import random
+
+
+def generate_password(word_list):
+    while True:
+        word1 = random.choice(word_list).strip()
+        word2 = random.choice(word_list).strip()
+        password = word1.capitalize() + word2.capitalize()
+
+        if 8 <= len(password) <= 10 and len(word1) >= 3 and len(word2) >= 3:
+            return password
+
+
+# Read the list of words from a file
+word_file = "words.txt"  # Replace with the actual file path
+with open(word_file, "r") as file:
+    words = file.readlines()
+
+# Generate the password
+password = generate_password(words)
+
+# Display the password to the user
+print("Generated Password:", password)

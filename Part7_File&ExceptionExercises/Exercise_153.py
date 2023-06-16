@@ -11,3 +11,44 @@ Exercise 153:A Book with No“e”…
     est proportion of the words. Your program should ignore any punctuation marks and
     it should treat uppercase and lowercase letters as equivalent.
 """
+
+import string
+
+
+def count_letter_proportions(file_name):
+    letter_counts = {letter: 0 for letter in string.ascii_lowercase}
+    total_words = 0
+
+    with open(file_name, "r") as file:
+        for line in file:
+            line = line.strip().lower()
+            words = line.split()
+
+            for word in words:
+                # Remove punctuation marks
+                word = word.translate(str.maketrans("", "", string.punctuation))
+
+                # Count each letter occurrence
+                for letter in word:
+                    if letter.isalpha():
+                        letter_counts[letter] += 1
+                        total_words += 1
+
+    letter_proportions = {letter: count / total_words for letter, count in letter_counts.items()}
+
+    return letter_proportions
+
+
+# Read the file and count letter proportions
+file_name = "words.txt"  # Replace with the actual file path
+proportions = count_letter_proportions(file_name)
+
+# Find the letter used in the smallest proportion of words
+smallest_proportion_letter = min(proportions, key=proportions.get)
+
+# Display the proportions for all letters
+for letter in string.ascii_lowercase:
+    print(f"{letter}: {proportions[letter]:.4f}")
+
+# Display the letter used in the smallest proportion of words
+print("Letter used in the smallest proportion of words:", smallest_proportion_letter)
